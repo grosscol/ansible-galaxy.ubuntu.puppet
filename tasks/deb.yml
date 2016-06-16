@@ -1,6 +1,7 @@
 ---
 
 - name: Install PuppetLabs release DEB for Debian derivates
+  become: yes
   apt: 
     deb: "{{ item }}" 
     state: "{{ puppet_package_state }}"
@@ -9,8 +10,10 @@
     - "{{ puppet_release_apt_baseurl }}/puppetlabs-release-{{ ansible_distribution_release }}.deb"
   tags:
     - repo
+    - packages
 
 - name: Install puppet via apt
+  become: yes
   apt: 
     pkg:   "{{ item }}"
     state: "{{ puppet_package_state }}"
