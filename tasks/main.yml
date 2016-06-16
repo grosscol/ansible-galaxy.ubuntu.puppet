@@ -11,6 +11,7 @@
     - install
 
 - name: Stop and disable puppet service
+  become: yes
   service: 
     name: puppet
     enabled: no
@@ -19,6 +20,7 @@
     - disable
 
 - name: Start and enable puppet service
+  become: yes
   service: 
     name: puppet 
     enabled: yes
