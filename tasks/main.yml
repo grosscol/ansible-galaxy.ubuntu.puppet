@@ -10,24 +10,20 @@
   tags:
     - install
 
-- name: Disable puppet service
+- name: Stop and disable puppet service
   service: 
     name: puppet
     enabled: no
     state: stopped
   tags:
-    - install
-    - service
     - disable
 
-- name: Enable puppet service
+- name: Start and enable puppet service
   service: 
     name: puppet 
     enabled: yes
     state: started
   tags:
-    - install
-    - service
     - enable
 
 # The puppet agent return codes are interesting
