@@ -2,19 +2,29 @@
 
 - include: rhel.yml
   when: ansible_os_family == 'RedHat'
+  tags:
+    - install
 
 - include: deb.yml
   when: ansible_os_family == 'Debian'
+  tags:
+    - install
 
 - name: Disable puppet service
-  service: name=puppet enabled=no state=stopped
+  service: 
+    name: puppet
+    enabled: no
+    state: stopped
   tags:
     - install
     - service
     - disable
 
 - name: Enable puppet service
-  service: name=puppet enabled=yes state=started
+  service: 
+    name: puppet 
+    enabled: yes
+    state: started
   tags:
     - install
     - service
